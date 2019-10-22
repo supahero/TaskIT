@@ -20,7 +20,18 @@ export default class Task {
         this.element = html.clone();
 
         this.element.find('.text').text(text);
-    }
+
+        this.element.find('.date').text(date.toLocaleDateString('en-US'));
+
+        $(() => {
+            let del = $('.close-btn');
+
+            del.click(_ => {
+                this.element.remove();
+                });
+        });
+
+        }
 
     public addMe(root: JQuery<Element>) {
         root.append(this.element);
